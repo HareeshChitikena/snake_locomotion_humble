@@ -1,0 +1,53 @@
+import sys
+from PyQt5.QtWidgets import QApplication, QMainWindow, QSlider
+import rclpy
+from std_msgs.msg import Float32
+
+class SliderWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+
+        # Create a slider widget and add it to the window
+        self.slider = QSlider(self)
+        self.slider.setOrientation(Qt.Horizontal)
+        self.slider.setRange(0, 100)
+        self.slider.valueChanged.connect(self.slider_moved)
+        self.setCentralWidget(self.slider)
+
+        # Create a publisher node to control the slider value
+        self.publisher = rclpy.create_node('slider_publisher')
+        self.publisher_topic = self.publisher.create_publisher(Float32, 'slider_value', 10)
+
+        # Create a subscriber node to listen to the slider value
+        self.subscriber = rclpy.create_node('slider_subscriber')
+        self.subscriber_topic = self.subscriber.create_subscription(Float32, 'slider_value', self.slider_updated, 10)
+
+    def slider_moved(self, value):
+        # Send the new slider value to the publisher node
+        msg = Float32()
+        msg.data = value
+        self.publisher_topic.publish(msg)
+
+    def slider_updated(self, msg):
+        # Update the slider value based on the published message
+        value = int(msg.data)
+        self.slider.setValue(value)
+
+if __name__ == '__main__':
+    # Initialize the ROS2 node
+    rclpy.init(args=sys.argv)
+
+    # Create the GUI window
+    app = QApplication(sys.argv)
+    window = SliderWindow()
+    window.show()
+
+    # Start the ROS2 event loop
+    rclpy.spin(window.publisher)
+    rclpy.spin(window.subscriber)
+
+    # Clean up
+    window.publisher.destroy_node()
+    window.subscriber.destroy_node()
+    rclpy.shutdown()
+    sys.exit(app.exec_())

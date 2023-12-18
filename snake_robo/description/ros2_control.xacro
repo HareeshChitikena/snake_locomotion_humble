@@ -1,0 +1,293 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro"  >
+   
+     <gazebo reference="link_1">
+        <material>Gazebo/Orange</material>        
+        <mu1>0.01</mu1>
+        <mu2>0.05</mu2>    
+    </gazebo>                                 
+   
+
+    <gazebo reference="link_2">
+        <material>Gazebo/Black</material>        
+        <mu1>0.01</mu1>
+        <mu2>0.05</mu2>                   
+    </gazebo>
+
+    <gazebo reference="link_3">
+        <material>Gazebo/Orange</material>        
+        <mu1>0.01</mu1>
+        <mu2>0.05</mu2>                       
+    </gazebo>
+
+    <gazebo reference="link_4">
+        <material>Gazebo/Black</material>        
+        <mu1>0.01</mu1>
+        <mu2>0.05</mu2>                           
+    </gazebo>
+
+    <gazebo reference="link_5">
+        <material>Gazebo/Orange</material>        
+        <mu1>0.01</mu1>
+        <mu2>0.05</mu2>                         
+    </gazebo>
+
+    <gazebo reference="link_6">
+        <material>Gazebo/Black</material>        
+        <mu1>0.01</mu1>
+        <mu2>0.05</mu2>                        
+    </gazebo>
+
+    <gazebo reference="link_7">
+        <material>Gazebo/Orange</material>        
+        <mu1>0.01</mu1>
+        <mu2>0.05</mu2>                       
+    </gazebo>
+
+    <gazebo reference="link_8">
+        <material>Gazebo/Black</material>        
+        <mu1>0.01</mu1>
+        <mu2>0.05</mu2>                    
+    </gazebo>
+
+    <gazebo reference="link_9">
+        <material>Gazebo/Orange</material>        
+        <mu1>0.01</mu1>
+        <mu2>0.05</mu2>                   
+    </gazebo>
+
+    <gazebo reference="link_10">
+        <material>Gazebo/Blue</material>        
+        <mu1>0.01</mu1>
+        <mu2>0.05</mu2>                      
+    </gazebo>
+
+    <ros2_control name="GazeboSystem" type="system">
+    	<hardware>
+            <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+    	</hardware>
+  
+      
+      <joint name="link_1_2_joint">
+        <command_interface name="effort">
+            <param name="min">-200</param>
+            <param name="max">200</param>
+        </command_interface>
+        <state_interface name="effort"/>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+
+    </joint>
+    
+    
+    <joint name="link_2_3_joint">
+        <command_interface name="effort">
+            <param name="min">-200</param>
+            <param name="max">200</param>
+        </command_interface>
+        <state_interface name="effort"/>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+    </joint>
+    
+    <joint name="link_3_4_joint">
+        <command_interface name="effort">
+            <param name="min">-200</param>
+            <param name="max">200</param>
+        </command_interface>
+        <state_interface name="effort"/>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+
+    </joint>
+
+
+    <joint name="link_4_5_joint">
+        <command_interface name="effort">
+            <param name="min">-200</param>
+            <param name="max">200</param>
+        </command_interface>
+        <state_interface name="effort"/>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+
+    </joint>
+    
+    <joint name="link_5_6_joint">
+        <command_interface name="effort">
+            <param name="min">-200</param>
+            <param name="max">200</param>
+        </command_interface>
+        <state_interface name="effort"/>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+
+    </joint>
+    
+    <joint name="link_6_7_joint">
+        <command_interface name="effort">
+            <param name="min">-200</param>
+            <param name="max">200</param>
+        </command_interface>
+        <state_interface name="effort"/>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+
+    </joint>
+    
+    
+    <joint name="link_7_8_joint">
+        <command_interface name="effort">
+            <param name="min">-200</param>
+            <param name="max">200</param>
+        </command_interface>
+        <state_interface name="effort"/>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+
+    </joint>
+    
+    
+    <joint name="link_8_9_joint">
+        <command_interface name="effort">
+            <param name="min">-200</param>
+            <param name="max">200</param>
+        </command_interface>
+        <state_interface name="effort"/>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+
+    </joint>
+    
+    
+    <joint name="link_9_10_joint">
+        <command_interface name="effort">
+            <param name="min">-200</param>
+            <param name="max">200</param>
+        </command_interface>
+        <state_interface name="effort"/>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+    </joint>
+  </ros2_control>
+    
+    
+    <gazebo>
+ <!--Friction coeffeceint in the direction of motion, i.e the tangential force   
+        <plugin name="gazebo_ros_joint_state_publisher"
+                    filename="libgazebo_ros_joint_state_publisher.so">
+                    <update_rate>100</update_rate>
+                    <joint_name>link_1_2_joint</joint_name>
+                    <joint_name>link_2_3_joint</joint_name>
+                    <joint_name>link_3_4_joint</joint_name>
+                    <joint_name>link_4_5_joint</joint_name>
+                    <joint_name>link_5_6_joint</joint_name>
+                    <joint_name>link_6_7_joint</joint_name>
+                    <joint_name>link_7_8_joint</joint_name>
+                    <joint_name>link_8_9_joint</joint_name>
+                    <joint_name>link_9_10_joint</joint_name>
+        </plugin>
+       -->
+        
+        <plugin name="gazebo_ros2_control" filename="libgazebo_ros2_control.so">
+        <robot_sim_type>gazebo_ros2_control/GazeboSystem</robot_sim_type>
+        <parameters>$(find my_bot)/config/my_controllers.yaml</parameters>
+        </plugin>
+    
+    </gazebo>
+    <transmission name="joint_1_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <actuator name="motor1">
+          <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+        <joint name="link_1_2_joint">
+          <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+      </transmission>
+      
+      <transmission name="joint_2_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <actuator name="motor2">
+          <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+        <joint name="link_2_3_joint">
+          <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+      </transmission>
+      
+      
+      
+      <transmission name="joint_3_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <actuator name="motor3">
+          <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+        <joint name="link_3_4_joint">
+          <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+      </transmission>
+      
+      
+      
+      <transmission name="joint_4_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <actuator name="motor4">
+          <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+        <joint name="link_4_5_joint">
+          <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+      </transmission>
+      
+       <transmission name="joint_5_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <actuator name="motor5">
+          <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+        <joint name="link_5_6_joint">
+          <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+      </transmission>
+      
+       <transmission name="joint_6_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <actuator name="motor6">
+          <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+        <joint name="link_6_7_joint">
+          <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+      </transmission>
+      
+       <transmission name="joint_7_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <actuator name="motor7">
+          <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+        <joint name="link_7_8_joint">
+          <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+      </transmission>
+      
+      
+       <transmission name="joint_8_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <actuator name="motor8">
+          <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+        <joint name="link_8_9_joint">
+          <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+      </transmission>
+      
+       <transmission name="joint_9_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <actuator name="motor9">
+          <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+        <joint name="link_9_10_joint">
+          <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+      </transmission>
+
+</robot>
