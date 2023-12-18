@@ -1,6 +1,7 @@
 # Snake_locomotion_humble
+This code is set for ROS2 humble.
 
-Working snake robot locomotion control, this code is set for ROS2 humble.
+Working snake robot locomotion control, 
 
 snake_robo consists of different folders with the package name my_bot.
 
